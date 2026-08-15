@@ -24,9 +24,9 @@ pipeline {
                 script{
                     echo "building the docker image..."
                     withCredentials([usernamePassword(credentialsId: 'docker-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-                        sh 'docker build -t aqibayoubnajar/demo-app:2.0 .'
+                        sh 'docker build -t aqibayoubnajar/demo_app:2.0 .'
                         sh 'echo $PASS | docker login -u $USER --password-stdin'
-                        sh "docker build -t aqibayoubnajar/demo-app:2.0 ."
+                        sh "docker build -t aqibayoubnajar/demo_app:2.0 ."
                     }
                 }
                 sh 'npm run build'
