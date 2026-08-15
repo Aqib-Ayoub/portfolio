@@ -26,7 +26,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'docker-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                         sh 'docker build -t aqibayoubnajar/demo_app:2.0 .'
                         sh 'echo $PASS | docker login -u $USER --password-stdin'
-                        sh "docker build -t aqibayoubnajar/demo_app:2.0 ."
+                        sh "docker push -t aqibayoubnajar/demo_app:2.0 ."
                     }
                 }
                 sh 'npm run build'
