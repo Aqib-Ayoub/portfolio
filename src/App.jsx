@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+
 const projects = [
   {
     tag: 'Ed-tech · Flutter + Node',
@@ -98,6 +100,51 @@ const stats = [
 ]
 
 export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
+  const [showScrollTop, setShowScrollTop] = useState(false)
+
+  /* Lock body scroll when mobile menu is open */
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
+  /* Scroll-reveal observer */
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('in-view')
+        })
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -60px 0px' }
+    )
+    document.querySelectorAll('section:not(.hero), .stats-bar, footer').forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
+  /* Active section + scroll-to-top */
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 500)
+      const ids = ['about', 'skills', 'projects', 'experience', 'approach', 'contact']
+      let current = ''
+      for (const id of ids) {
+        const el = document.getElementById(id)
+        if (!el) continue
+        if (el.getBoundingClientRect().top <= 200) current = id
+      }
+      setActiveSection(current)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const closeMenu = () => setMenuOpen(false)
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+
   return (
     <>
       <div className="accent-bar" aria-hidden="true" />
@@ -107,12 +154,28 @@ export default function App() {
           <a className="nav-mark" href="#top">
             aqib<span>.dev</span>
           </a>
-          <ul className="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
+
+          <button
+            className={`menu-toggle ${menuOpen ? 'open' : ''}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation"
+            aria-expanded={menuOpen}
+          >
+            <span /><span /><span />
+          </button>
+
+          <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
+            {['about', 'skills', 'projects', 'experience', 'contact'].map((id) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  className={activeSection === id ? 'active' : ''}
+                  onClick={closeMenu}
+                >
+                  {id.charAt(0).toUpperCase() + id.slice(1)}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </header>
@@ -223,7 +286,7 @@ export default function App() {
         </section>
 
         {/* ── 02 · Skills ── */}
-        <section id="skills">
+        <section id="skills" className="alt-bg">
           <div className="wrap">
             <div className="section-head">
               <h2>Skills</h2>
@@ -269,7 +332,7 @@ export default function App() {
         </section>
 
         {/* ── 04 · Experience ── */}
-        <section id="experience">
+        <section id="experience" className="alt-bg">
           <div className="wrap">
             <div className="section-head">
               <h2>Experience</h2>
@@ -321,14 +384,22 @@ export default function App() {
               <p className="lede">Open to freelance work and full-stack roles — reach out any time.</p>
             </div>
             <div className="footer-links">
-              <a href="mailto:your.email@example.com">your.email@example.com</a>
-              <a href="https://github.com/your-username" target="_blank" rel="noreferrer">GitHub</a>
-              <a href="https://linkedin.com/in/your-username" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="mailto:aqibayoub321@gmail.com">aqibayoub321@gmail.com</a>
+              <a href="https://github.com/Aqib-Ayoub" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/aqib-ayoub-800a30183/" target="_blank" rel="noreferrer">LinkedIn</a>
             </div>
           </div>
           <p className="footnote">© {new Date().getFullYear()} Aqib Ayoub Najar. Built with React &amp; shipped on AWS.</p>
         </div>
       </footer>
+
+      <button
+        className={`scroll-top ${showScrollTop ? 'visible' : ''}`}
+        onClick={scrollToTop}
+        aria-label="Scroll to top"
+      >
+        ↑
+      </button>
     </>
   )
 }
