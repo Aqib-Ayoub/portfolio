@@ -195,7 +195,12 @@ export default function App() {
           </div>
           <div className="wrap hero-grid">
             <div className="hero-content">
-              <p className="eyebrow anim-fade-up">Full-stack developer · Srinagar, Kashmir</p>
+              <div className="hero-badge-row anim-fade-up">
+                <div className="hero-avatar-mini">
+                  <img src="/images/professional.png" alt="Aqib Ayoub Najar" />
+                </div>
+                <p className="eyebrow">Full-stack developer · Srinagar, Kashmir</p>
+              </div>
               <h1 className="anim-fade-up anim-delay-1">
                 I write the code, <em>then I ship it</em> myself.
               </h1>
@@ -209,17 +214,38 @@ export default function App() {
               </div>
             </div>
 
-            <div className="terminal anim-slide-in-right" aria-hidden="true">
-              <div className="terminal-bar">
-                <span /><span /><span />
+            <div className="hero-visual anim-slide-in-right">
+              <div className="hero-profile-card">
+                <div className="hero-card-header">
+                  <div className="hero-portrait-frame">
+                    <img
+                      src="/images/professional.png"
+                      alt="Aqib Ayoub Najar — Full-Stack Developer"
+                      className="hero-portrait-img"
+                    />
+                  </div>
+                  <div className="hero-card-meta">
+                    <span className="hero-status-pill">
+                      <span className="status-dot" /> Available for Hire
+                    </span>
+                    <span className="hero-card-title">Aqib Ayoub Najar</span>
+                    <span className="hero-card-subtitle">Full-Stack &amp; Cloud Engineer</span>
+                  </div>
+                </div>
               </div>
-              <div className="terminal-body">
-                <div className="terminal-line tl-1"><span className="prompt">$</span> ssh aqib@ec2</div>
-                <div className="terminal-line tl-2">&gt; pulling latest build...</div>
-                <div className="terminal-line tl-3">&gt; pm2 restart app <span className="ok">✓</span></div>
-                <div className="terminal-line tl-4">&gt; nginx -s reload <span className="ok">✓</span></div>
-                <div className="terminal-line tl-5">&gt; certbot renew <span className="ok">✓</span></div>
-                <div className="terminal-line tl-6">&gt; deployed<span className="cursor" /></div>
+
+              <div className="terminal" aria-hidden="true">
+                <div className="terminal-bar">
+                  <span /><span /><span />
+                </div>
+                <div className="terminal-body">
+                  <div className="terminal-line tl-1"><span className="prompt">$</span> ssh aqib@ec2</div>
+                  <div className="terminal-line tl-2">&gt; pulling latest build...</div>
+                  <div className="terminal-line tl-3">&gt; pm2 restart app <span className="ok">✓</span></div>
+                  <div className="terminal-line tl-4">&gt; nginx -s reload <span className="ok">✓</span></div>
+                  <div className="terminal-line tl-5">&gt; certbot renew <span className="ok">✓</span></div>
+                  <div className="terminal-line tl-6">&gt; deployed<span className="cursor" /></div>
+                </div>
               </div>
             </div>
           </div>
@@ -245,7 +271,7 @@ export default function App() {
               <span className="section-num">01</span>
             </div>
             <div className="about-grid">
-              <div>
+              <div className="about-bio">
                 <p>
                   I'm a recent BCA graduate (2023–2026) and GNIIT-certified full-stack developer
                   working across Flutter, React, and the Node / Express / Prisma / PostgreSQL stack.
@@ -265,6 +291,20 @@ export default function App() {
                   who stay curious.
                 </p>
               </div>
+
+              <div className="about-media">
+                <div className="about-image-card">
+                  <img
+                    src="/images/fullcard.jpeg"
+                    alt="Aqib Ayoub Najar studying system design"
+                    className="about-full-img"
+                  />
+                  <div className="about-image-overlay">
+                    <span className="about-image-tag">System Design &amp; Craft</span>
+                  </div>
+                </div>
+              </div>
+
               <dl className="facts">
                 <div className="fact">
                   <dt>Based in</dt>
