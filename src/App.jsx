@@ -32,10 +32,10 @@ const projects = [
     stack: ['Arduino', 'C++', 'Node.js', 'MQTT'],
   },
   {
-    tag: 'DevOps · CI/CD',
-    name: 'CI/CD Pipeline Toolkit',
-    desc: 'A containerized Jenkins pipeline with Docker multi-stage builds, automated testing, and one-click deployment to AWS infrastructure.',
-    stack: ['Jenkins', 'Docker', 'Nginx', 'AWS EC2'],
+    tag: 'Healthcare · Appointment system',
+    name: 'ShifaLink',
+    desc: 'A healthcare appointment booking app connecting patients with doctors — featuring slot management, booking confirmations, patient history, and a clean scheduling interface.',
+    stack: ['React', 'Node.js', 'Express', 'PostgreSQL'],
   },
 ]
 
@@ -47,6 +47,11 @@ const skillGroups = [
 ]
 
 const timeline = [
+  {
+    year: '2026',
+    title: 'BCA Graduate',
+    desc: 'Completed Bachelor of Computer Applications (2023–2026), building a strong foundation in programming, databases, and system design.',
+  },
   {
     year: '2025',
     title: 'Bus Booking Platform — Client Project',
@@ -64,13 +69,13 @@ const timeline = [
   },
   {
     year: '2023',
-    title: 'Started Freelancing',
-    desc: 'Began taking on client projects, building full-stack web and mobile applications with Flutter, React, and Node.js.',
+    title: 'GNIIT Diploma — Cloud & Software Engineering',
+    desc: 'Completed a 2-year GNIIT diploma in Cloud and Software Engineering, gaining hands-on skills in cloud architecture, DevOps, and full-stack development.',
   },
   {
-    year: '2022',
-    title: 'BCA Graduate',
-    desc: 'Completed Bachelor of Computer Applications, building a strong foundation in programming, databases, and system design.',
+    year: '2023',
+    title: 'Started Freelancing',
+    desc: 'Began taking on client projects, building full-stack web and mobile applications with Flutter, React, and Node.js.',
   },
 ]
 
@@ -242,9 +247,10 @@ export default function App() {
             <div className="about-grid">
               <div>
                 <p>
-                  I'm a BCA graduate and full-stack developer working across Flutter, React, and the
-                  Node / Express / Prisma / PostgreSQL stack. AWS handles everything
-                  after the code is written — and I handle AWS.
+                  I'm a recent BCA graduate (2023–2026) and GNIIT-certified full-stack developer
+                  working across Flutter, React, and the Node / Express / Prisma / PostgreSQL stack.
+                  My 2-year diploma in Cloud &amp; Software Engineering shaped the way I think about
+                  infrastructure — AWS handles everything after the code is written, and I handle AWS.
                 </p>
                 <p>
                   Most of what I build goes all the way to production myself — provisioning
@@ -266,7 +272,7 @@ export default function App() {
                 </div>
                 <div className="fact">
                   <dt>Education</dt>
-                  <dd>Bachelor of Computer Applications (BCA)</dd>
+                  <dd>BCA (2023–2026) · GNIIT Diploma in Cloud &amp; Software Engineering (2023)</dd>
                 </div>
                 <div className="fact">
                   <dt>Currently</dt>
